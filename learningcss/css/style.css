@@ -1,0 +1,43 @@
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.smallfont {
+    font-size: 10px;
+}
+
+.bigfont {
+    font-size: 50px;
+}
+
+.black {
+    color: black;
+}
+
+.white {
+    color: white;
+}
+
+.turqoise {
+    color: darkturquoise;
+}
+
+.black-background {
+    background-color: black;
+}
+
+.white-background {
+    background-color: white;
+}
