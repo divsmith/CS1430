@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Album</title>
+
+    <style>
+        body {
+            background-color: #D3D0CB;
+            color: #0F0A0A;
+        }
+
+        #heading {
+            text-align: center;
+            font-family: Helvetica;
+            color: #2292A4;
+            background-color: #0F0A0A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+        }
+
+        #top-photo {
+            overflow: hidden;
+            margin: auto;
+            width: 600px;
+            height: 400px;
+            margin-top: 100px;
+            -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            border-radius: 7px 7px 7px 7px;
+            -moz-border-radius: 7px 7px 7px 7px;
+            -webkit-border-radius: 7px 7px 7px 7px;
+            border: 0px solid #000000;
+        }
+
+        #about {
+            width: 580px;
+            font-family: Helvetica;
+            margin: auto;
+            margin-top: 10px;
+            padding: 10px;
+            clear: both;
+
+            background-color: #BDBF09;
+
+            -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            border-radius: 7px 7px 7px 7px;
+            -moz-border-radius: 7px 7px 7px 7px;
+            -webkit-border-radius: 7px 7px 7px 7px;
+            border: 0px solid #000000;
+        }
+
+        #album {
+            width: 600px;
+            margin: auto;
+        }
+
+        .floating-box-left-end, .floating-box-right-end, .floating-box-middle {
+            float: left;
+            height: 125px;
+            width: 125px;
+            border: 1px solid grey;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+
+            -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            border-radius: 7px 7px 7px 7px;
+            -moz-border-radius: 7px 7px 7px 7px;
+            -webkit-border-radius: 7px 7px 7px 7px;
+            border: 0px solid #000000;
+        }
+
+        .floating-box-left-end {
+            margin-left: 0px;
+            margin-right: 15px;
+        }
+
+        .floating-box-right-end {
+            margin-right: 0px;
+            margin-left: 15px;
+        }
+
+        .floating-box-middle {
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+
+        #footer {
+            color: #D3D0CB;
+            text-align: center;
+            font-size: 14px;
+            background-color: #0F0A0A;
+            font-family: Helvetica;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="heading"><h1>Porsche 911 Photo Album</h1></div>
+
+    <div id="top-photo">
+        <img src="1.jpg" alt="">
+    </div>
+
+    <div id="album">
+        <div class="floating-box-left-end"><img src="2.jpg" alt=""></div>
+        <div class="floating-box-middle"><img src="3.jpg" alt=""></div>
+        <div class="floating-box-middle"><img src="4.jpg" alt=""></div>
+        <div class="floating-box-right-end"><img src="5.jpg" alt=""></div>
+    </div>
+
+    <div id="about">
+        <p>
+            The Porsche 911 was introduced in 1963 and is still produced today. As such, it has the longest continuous production
+            run of any car in the world. It is known for its performance oriented handling characteristics and the
+            distinct sound produced by its rear mounted flat six cylinder engine.
+        </p>
+    </div>
+
+    <div id="footer">
+        <p>Copyright and Privacy Stuff</p>
+    </div>
+</body>
+</html>
