@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Olio Pizzeria</title>
+    <title>Olio Pizzeria - "Taste of Italy"</title>
     <link href='https://fonts.googleapis.com/css?family=Italiana' rel='stylesheet' type='text/css'>
     <style type="text/css">
         body {
@@ -64,7 +64,7 @@
 
         #logo {
             display: block;
-            width: 400px;
+            width: 500px;
             height: auto;
             margin-top: 25px;
             margin-left: auto;
@@ -76,13 +76,14 @@
             -moz-border-radius: 22px 22px 22px 22px;
             -webkit-border-radius: 22px 22px 22px 22px;
             margin-top: 25px;
-            width: 900px;
+            width: 1000px;
             height: auto;
             margin-left: auto;
             margin-right: auto;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 15px;
             overflow: hidden;
+            border: 2px solid black;
         }
 
         .left {
@@ -160,19 +161,19 @@
     <img id='logo' src="OP-Web-Logo.png" alt="Olio Pizzeria">
 
     <div id="order-div">
-        <form action="MAILTO:psmit108@bruinmail.slcc.edu" method="POST" id="order-form">
+        <form action="MAILTO:psmit108@bruinmail.slcc.edu?subject=Olio Pizzeria Online Order" method="POST" id="order-form" enctype="text/plain">
             <div class="left">
                 <div id="contact" class="section">
                     <div class="label">Contact</div>
-                    <input type="text" name="name" placeholder="Your Name"><br>
-                    <input type="text" name="address" placeholder="Delivery Address"><br>
-                    <input type="tel" name="phone" placeholder="Phone Number"><br>
+                    <input type="text" name="name" placeholder="Your Name" required><br>
+                    <input type="text" name="address" placeholder="Delivery Address" required><br>
+                    <input type="tel" name="phone" placeholder="Phone Number" pattern="(\d\s|\d|\d\-)?[(]?\d{3}[\-)]?[\s\-]?\d{3}[\s\-]?\d{4}"required><br>
                 </div>
 
                 <div id="crust" class="section">
                     <div class="label">Crust</div>
-                    <select name="crust">
-                        <option value="NORM">Normale (Normal)</option>
+                    <select name="crust" required>
+                        <option value="NORM">Classico (Classic)</option>
                         <option value="THIN">Magro (Thin)</option>
                         <option value="THICK">Piatto Fondo (Deep Dish)</option>
                     </select>
@@ -187,10 +188,12 @@
             <div class="right">
                 <div id="size" class="section">
                     <div class="label">Size</div>
-                    <div id="size-options"><input type="radio" name="size" value="SM">&nbsp;&nbsp;Piccolo (Small)<br>
+                    <div id="size-options">
+                        <input type="radio" name="size" value="SM" required>&nbsp;&nbsp;Piccolo (Small)<br>
                         <input type="radio" name="size" value="MED">&nbsp;&nbsp;Medio (Medium)<br>
                         <input type="radio" name="size" value="LG">&nbsp;&nbsp;Grande (Large)<br>
-                        <input type="radio" name="size" value="XL">&nbsp;&nbsp;Enorme (Extra Large)<br></div>
+                        <input type="radio" name="size" value="XL">&nbsp;&nbsp;Enorme (Extra Large)<br>
+                    </div>
                 </div>
 
                 <div id="toppings" class="section">
@@ -211,8 +214,9 @@
                         </div>
                         <div class="topping-column"><input type="checkbox" name="toppings" value="EXTCHS">&nbsp;Extra Cheese<br>
                             <input type="checkbox" name="toppings" value="ONI">&nbsp;Onion<br>
-                            <input type="checkbox" name="toppings" value="ANCH">&nbsp;Anchovies<br>
-                            <input type="checkbox" name="toppings" value="MUSH">&nbsp;Mushrooms<br>
+                            <input type="checkbox" name="toppings" value="ANCH">&nbsp;Anchovie<br>
+                            <input type="checkbox" name="toppings" value="MUSH">&nbsp;Mushroom<br>
+                            <input type="checkbox" name="toppings" value="GAR">&nbsp;Garlic<br>
                         </div>
                     </div>
                 </div>
