@@ -19,6 +19,52 @@
             -moz-border-radius: 4px 4px 4px 4px;
             -webkit-border-radius: 4px 4px 4px 4px;
             background-color: #E9CD87;
+            font-size: 15px;
+        }
+
+        input[type=submit], input[type=reset] {
+            width: 60%;
+            padding: 10px 12px;
+            margin: 8px 0;
+            border: 1px solid #FFFABA;
+            border-radius: 4px 4px 4px 4px;
+            -moz-border-radius: 4px 4px 4px 4px;
+            -webkit-border-radius: 4px 4px 4px 4px;
+            background-color: #E9CD87;
+            font-size: 15px;
+            -webkit-transition: background-color 0.5s;
+            -webkit-transition: padding 0.5s;
+            -webkit-transition: width 0.5s;
+        }
+
+        input[type=submit]:hover {
+            cursor: pointer;
+            background-color: #B0B51A;
+            width: 80%;
+            border: none;
+            padding: 15px 12px;
+            font-size: 25px;
+        }
+
+        input[type=reset]:hover {
+            cursor: pointer;
+            background-color: #b30000;
+            width: 80%;
+            border: none;
+            padding: 15px 12px;
+            font-size: 25px;
+        }
+
+        textarea {
+            width: 80%;
+            padding: 20px 12px;
+            margin: 8px 0;
+            border: 1px solid #FFFABA;
+            border-radius: 4px 4px 4px 4px;
+            -moz-border-radius: 4px 4px 4px 4px;
+            -webkit-border-radius: 4px 4px 4px 4px;
+            background-color: #E9CD87;
+            font-size: 15px;
         }
 
         #logo {
@@ -35,7 +81,7 @@
             -moz-border-radius: 22px 22px 22px 22px;
             -webkit-border-radius: 22px 22px 22px 22px;
             margin-top: 25px;
-            width: 700px;
+            width: 900px;
             height: auto;
             margin-left: auto;
             margin-right: auto;
@@ -70,14 +116,16 @@
             width: 70%;
             margin: auto;
             text-align: left;
+            padding-left: 100px;
         }
 
         .label {
             font-size: 50px;
+            font-weight: bold;
         }
 
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
@@ -93,6 +141,23 @@
         }
         :-moz-placeholder {
             color: black;
+        }
+
+        .topping-column {
+            text-align: left;
+            width: 33%;
+            margin: auto;
+            float: left;
+        }
+
+        #topping-options {
+            padding-left: 50px;
+            margin-top: 10px;
+        }
+
+        #buttons {
+            position: relative;
+            top: 50px;
         }
     </style>
 </head>
@@ -117,31 +182,55 @@
                         <option value="THICK">Piatto Fondo (Deep Dish)</option>
                     </select>
                 </div>
+
+                <div id="notes" class="section">
+                    <div class="label">Notes</div>
+                    <textarea name="notes"></textarea>
+                </div>
             </div>
 
             <div class="right">
                 <div id="size" class="section">
                     <div class="label">Size</div>
-                    <div id="size-options"><input type="radio" name="size" value="SM">Piccolo (Small)<br>
-                        <input type="radio" name="size" value="MED">Medio (Medium)<br>
-                        <input type="radio" name="size" value="LG">Grande (Large)<br>
-                        <input type="radio" name="size" value="XL">Enorme (Extra Large)<br></div>
+                    <div id="size-options"><input type="radio" name="size" value="SM">&nbsp;&nbsp;Piccolo (Small)<br>
+                        <input type="radio" name="size" value="MED">&nbsp;&nbsp;Medio (Medium)<br>
+                        <input type="radio" name="size" value="LG">&nbsp;&nbsp;Grande (Large)<br>
+                        <input type="radio" name="size" value="XL">&nbsp;&nbsp;Enorme (Extra Large)<br></div>
                 </div>
 
                 <div id="toppings" class="section">
                     <div class="label">Toppings</div>
-                    <input type="checkbox" name="toppings" value="PEP">Pepperoni<br>
-                    <input type="checkbox" name="toppings" value="PINE">Pineapple<br>
-                    <input type="checkbox" name="toppings" value="HAM">Canadian Bacon<br>
-                    <input type="checkbox" name="toppings" value="SAS">Sausage<br>
-                    <input type="checkbox" name="toppings" value="BAC">Bacon<br>
-                    <input type="checkbox" name="toppings" value="GRNPEP">Green Pepper<br>
-                    <input type="checkbox" name="toppings" value="ONI">Onion<br>
-                    <input type="checkbox" name="toppings" value="OLV">Olive<br>
+                    <div id="topping-options">
+                        <div class="topping-column"><input type="checkbox" name="toppings"
+                                                           value="PEP">&nbsp;Pepperoni<br>
+                            <input type="checkbox" name="toppings" value="PINE">&nbsp;Pineapple<br>
+                            <input type="checkbox" name="toppings" value="HAM">&nbsp;Ham<br>
+                            <input type="checkbox" name="toppings" value="SAS">&nbsp;Sausage<br>
+                            <input type="checkbox" name="toppings" value="CHIK">&nbsp;Chicken<br>
+                        </div>
+                        <div class="topping-column"><input type="checkbox" name="toppings" value="BAC">&nbsp;Bacon<br>
+                            <input type="checkbox" name="toppings" value="GRNPEP">&nbsp;Green Pepper<br>
+                            <input type="checkbox" name="toppings" value="REDPEP">&nbsp;Red Pepper<br>
+                            <input type="checkbox" name="toppings" value="OLV">&nbsp;Olive<br>
+                            <input type="checkbox" name="toppings" value="BBQ">&nbsp;BBQ Sauce<br>
+                        </div>
+                        <div class="topping-column"><input type="checkbox" name="toppings" value="EXTCHS">&nbsp;Extra Cheese<br>
+                            <input type="checkbox" name="toppings" value="ONI">&nbsp;Onion<br>
+                            <input type="checkbox" name="toppings" value="ANCH">&nbsp;Anchovies<br>
+                            <input type="checkbox" name="toppings" value="MUSH">&nbsp;Mushrooms<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="section" id="buttons">
+                    <input type="submit" value="Place Order">
+                    <input type="reset" value="Reset">
                 </div>
             </div>
-
         </form>
     </div>
+
+    <script>
+        window.scrollTo(0, document.body.scrollHeight);
+    </script>
 </body>
 </html>
