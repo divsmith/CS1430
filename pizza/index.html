@@ -7,6 +7,18 @@
     <style>
         body {
             background-image: url('pizza_pieces_sausage_71548_1920x1080.jpg');
+            color: #FFFABA;
+        }
+
+        input[type=text], input[type=tel], select {
+            width: 80%;
+            padding: 10px 12px;
+            margin: 8px 0;
+            border: 1px solid #FFFABA;
+            border-radius: 4px 4px 4px 4px;
+            -moz-border-radius: 4px 4px 4px 4px;
+            -webkit-border-radius: 4px 4px 4px 4px;
+            background-color: #E9CD87;
         }
 
         #logo {
@@ -24,11 +36,12 @@
             -webkit-border-radius: 22px 22px 22px 22px;
             margin-top: 25px;
             width: 700px;
-            height: 400px;
+            height: auto;
             margin-left: auto;
             margin-right: auto;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 15px;
+            overflow: hidden;
         }
 
         .left {
@@ -39,7 +52,7 @@
 
         .right {
             width: 50%;
-            float: right;
+            float: left;
             margin: auto;
         }
 
@@ -54,18 +67,32 @@
         }
 
         #size-options {
-            text-align: left;
             width: 70%;
             margin: auto;
+            text-align: left;
         }
 
         .label {
-            font-size: 40px;
+            font-size: 50px;
         }
 
         .section {
             margin-bottom: 30px;
             text-align: center;
+        }
+
+        ::-webkit-input-placeholder {
+            color: black;
+        }
+
+        ::-moz-placeholder {
+            color: black;
+        }
+        :-ms-input-placeholder {
+            color: black;
+        }
+        :-moz-placeholder {
+            color: black;
         }
     </style>
 </head>
@@ -77,21 +104,11 @@
             <div class="left">
                 <div id="contact" class="section">
                     <div class="label">Contact</div>
-                    <input type="text" name="name" value="Name"><br>
-                    <input type="text" name="address" value="Address"><br>
-                    <input type="text" name="phone" value="Phone Number"><br>
+                    <input type="text" name="name" placeholder="Your Name"><br>
+                    <input type="text" name="address" placeholder="Delivery Address"><br>
+                    <input type="tel" name="phone" placeholder="Phone Number"><br>
                 </div>
 
-                <div id="size" class="section">
-                    <div class="label">Size</div>
-                    <div id="size-options"><input type="radio" name="size" value="SM">Piccolo (Small)<br>
-                        <input type="radio" name="size" value="MED">Medio (Medium)<br>
-                        <input type="radio" name="size" value="LG">Grande (Large)<br>
-                        <input type="radio" name="size" value="XL">Enorme (Extra Large)<br></div>
-                </div>
-            </div>
-
-            <div class="right">
                 <div id="crust" class="section">
                     <div class="label">Crust</div>
                     <select name="crust">
@@ -100,9 +117,27 @@
                         <option value="THICK">Piatto Fondo (Deep Dish)</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="right">
+                <div id="size" class="section">
+                    <div class="label">Size</div>
+                    <div id="size-options"><input type="radio" name="size" value="SM">Piccolo (Small)<br>
+                        <input type="radio" name="size" value="MED">Medio (Medium)<br>
+                        <input type="radio" name="size" value="LG">Grande (Large)<br>
+                        <input type="radio" name="size" value="XL">Enorme (Extra Large)<br></div>
+                </div>
 
                 <div id="toppings" class="section">
                     <div class="label">Toppings</div>
+                    <input type="checkbox" name="toppings" value="PEP">Pepperoni<br>
+                    <input type="checkbox" name="toppings" value="PINE">Pineapple<br>
+                    <input type="checkbox" name="toppings" value="HAM">Canadian Bacon<br>
+                    <input type="checkbox" name="toppings" value="SAS">Sausage<br>
+                    <input type="checkbox" name="toppings" value="BAC">Bacon<br>
+                    <input type="checkbox" name="toppings" value="GRNPEP">Green Pepper<br>
+                    <input type="checkbox" name="toppings" value="ONI">Onion<br>
+                    <input type="checkbox" name="toppings" value="OLV">Olive<br>
                 </div>
             </div>
 
