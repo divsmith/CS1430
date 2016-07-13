@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guessing Game Tutorial</title>
+</head>
+<body onload="initialize()">
+    <h1>Guessing Game</h1>
+
+    <form name="guessForm" action="javascript:checkGuess()">
+        Your guess: <input type="text" name="userGuess" value="0" size="10" maxlength="2">
+        <br><br>
+        <input type="button" value="Submit Guess" onclick="checkGuess()">
+    </form>
+
+</body>
+</html>
