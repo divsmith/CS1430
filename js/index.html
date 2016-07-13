@@ -3,15 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <title>Guessing Game Tutorial</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Katibeh" rel="stylesheet">
+
+    <style>
+        body {
+            color: white;
+            background-image: url('jellybeans.jpg');
+            background-repeat: no-repeat;
+            background-color: black;
+            background-size: 100%;
+            text-align: center;
+
+            font-family: 'Katibeh', cursive;
+        }
+
+        #game-div {
+            border-radius: 22px 22px 22px 22px;
+            -moz-border-radius: 22px 22px 22px 22px;
+            -webkit-border-radius: 22px 22px 22px 22px;
+            width: 600px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(0, 0, 0, 0.6 );
+            padding: 30px;
+            margin-top: 150px;
+            overflow: hidden;
+            border: none;
+        }
+
+        #guess-input {
+            display: inline;
+            font-size: 50px;
+        }
+
+        input[type=number] {
+            border-radius: 6px 6px 6px 6px;
+            font-size: 25px;
+            width: 50px;
+            /*-moz-border-radius: 4px 4px 4px 4px;*/
+            /*-webkit-border-radius: 4px 4px 4px 4px;*/
+        }
+
+        #message {
+            font-size: 50px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            visibility: hidden;
+
+        }
+
+        input[type=button] {
+            border-radius: 6px;
+            font-size: 30px;
+            padding-top: 10px;
+            padding-bottom: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-family: 'Katibeh', cursive;
+            background-color: #30C022;
+            border: none;
+            cursor: pointer;
+        }
+
+        #heading {
+            font-size: 120px;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+    </style>
 </head>
 <body onload="initialize()">
-    <h1>Guessing Game</h1>
 
-    <form name="guessForm" action="javascript:checkGuess()">
-        Your guess: <input type="text" name="userGuess" value="0" size="10" maxlength="2">
-        <br><br>
-        <input type="button" value="Submit Guess" onclick="checkGuess()">
-    </form>
 
+    <div id="game-div">
+        <h1 id="heading">Guessing Game</h1>
+        <h3 id="message">placeholder</h3>
+        <form name="guessForm" action="javascript:checkGuess()">
+            <div id="guess-input">
+                Your guess:&nbsp;<input type="number" name="userGuess" value="50"
+                                                           maxlength="2">
+            </div>
+            <br>
+            <input type="button" value="Guess" onclick="checkGuess()">
+        </form>
+    </div>
+
+    <script>
+        var message = document.getElementById('message'); // Get the message div for later user.
+        var theNumber = 0; // The number that the user is trying to guess.
+        var name = prompt("Enter Your Name:", " Parker"); // Get the user's name.
+        var rotate; // Variable to set and clear the interval timer.
+
+        function initialize()
+        {
+            // Set the number the user is trying to guess.
+            theNumber = Math.floor(Math.random() * 100);
+            console.log(theNumber);
+
+            // Focus and select the input box.
+            setCursor();
+        }
+
+        function rotateWinnerImage()
+        {
+            var image = document.body.style.backgroundImage;
+            var imageNumber = image.slice(11, 12);
+
+            imageNumber++;
+
+            if (imageNumber > 3)
+            {
+                imageNumber = 1;
+            }
+
+            document.body.style.backgroundImage = "url('winner" + imageNumber + ".jpg')";
+        }
+
+        function setCursor()
+        {
+            document.guessForm.userGuess.focus();
+            document.guessForm.userGuess.select();
+        }
+
+        function checkGuess()
+        {
+            // get user guess
+            var userGuess = parseInt(document.guessForm.userGuess.value);
+
+            if (userGuess === theNumber)
+            {
+                message.innerHTML = 'You won ' + name + '!';
+                message.style.visibility = 'visible';
+
+                document.body.style.backgroundImage = "url('winner1.jpg')";
+                rotate = setInterval(rotateWinnerImage, 1000);
+            }
+            else
+            {
+                if (userGuess > theNumber)
+                {
+                    // Set the message for the user.
+                    message.innerHTML = 'Too High! Guess lower than ' + userGuess;
+                    message.style.visibility = 'visible';
+
+                    // Change the background image, then change it back.
+                    document.body.style.backgroundImage = "url('happyFace.jpg')";
+                    setTimeout(function() {
+                        document.body.style.backgroundImage = "url('jellybeans.jpg')";
+                    }, 1000);
+                }
+                else
+                {
+                    // Set the message for the user.
+                    message.innerHTML = 'Too Low! Guess higher than ' + userGuess;
+                    message.style.visibility = 'visible';
+
+                    // Change the background image, then change it back.
+                    document.body.style.backgroundImage = "url('sadFace.jpg')";
+                    setTimeout(function() {
+                        document.body.style.backgroundImage = "url('jellybeans.jpg')";
+                    }, 1000);
+                }
+
+                // Focus and select the input box.
+                setCursor();
+            }
+        }
+    </script>
 </body>
 </html>
