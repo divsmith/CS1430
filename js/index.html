@@ -62,9 +62,16 @@
             padding-left: 20px;
             padding-right: 20px;
             font-family: 'Katibeh', cursive;
-            background-color: #30C022;
             border: none;
             cursor: pointer;
+        }
+
+        #guessButton {
+            background-color: #30C022;
+        }
+
+        #resetButton {
+            background-color: #D70002;
         }
 
         #heading {
@@ -75,32 +82,54 @@
     </style>
 </head>
 <body onload="initialize()">
-
-
     <div id="game-div">
         <h1 id="heading">Guessing Game</h1>
         <h3 id="message">placeholder</h3>
         <form name="guessForm" action="javascript:checkGuess()">
             <div id="guess-input">
-                Your guess:&nbsp;<input type="number" name="userGuess" value="50"
+                Your guess:&nbsp;<input id="numberInput" type="number" name="userGuess" value="50"
                                                            maxlength="2">
             </div>
             <br>
-            <input type="button" value="Guess" onclick="checkGuess()">
+            <input id="guessButton" type="button" value="Guess" onclick="checkGuess()">
+            <input id="resetButton" type="button" value="Reset" onclick="resetGame()">
         </form>
     </div>
 
     <script>
         var message = document.getElementById('message'); // Get the message div for later user.
+        var guessButton = document.getElementById('guessButton'); // Get the guess button for later use.
         var theNumber = 0; // The number that the user is trying to guess.
-        var name = prompt("Enter Your Name:", " Parker"); // Get the user's name.
+        var name = name = prompt("Your Name"); // Get the user's name.
         var rotate; // Variable to set and clear the interval timer.
+        var wrongImageResetTime = 1500;
+        var winnerImageRotateTime = 750;
+
+        // Set the default background image.
+        function setDefaultBackgroundImage()
+        {
+            document.body.style.backgroundImage = "url('jellybeans.jpg')";
+        }
 
         function initialize()
         {
+            // Set the default background image.
+            setDefaultBackgroundImage();
+
+            // Enable the guess button
+            guessButton.disabled = false;
+            guessButton.style.backgroundColor = '#30C022';
+            guessButton.style.cursor = 'pointer';
+
+            // Place placeholder text in the message div and make it hidden.
+            message.innerHTML = 'placeholder';
+            message.style.visibility = 'hidden';
+
             // Set the number the user is trying to guess.
             theNumber = Math.floor(Math.random() * 100);
             console.log(theNumber);
+
+            document.getElementById('numberInput').value = 50;
 
             // Focus and select the input box.
             setCursor();
@@ -108,37 +137,64 @@
 
         function rotateWinnerImage()
         {
+            // Get the current URL for the background image.
             var image = document.body.style.backgroundImage;
+
+            // Slice out the number from the image url (i.e. 1, 2, 3);
             var imageNumber = image.slice(11, 12);
 
+            // Increment the number.
             imageNumber++;
 
+            // Reset to 1 if we've reached the 3rd image.
             if (imageNumber > 3)
             {
                 imageNumber = 1;
             }
 
+            // Set the next background image.
             document.body.style.backgroundImage = "url('winner" + imageNumber + ".jpg')";
         }
 
+        function resetGame()
+        {
+            // Clear the interval image rotation.
+            clearInterval(rotate);
+
+            // Initialize the game again.
+            initialize();
+        }
+
+        // Focus the input box and highlight the text inside of it.
         function setCursor()
         {
             document.guessForm.userGuess.focus();
             document.guessForm.userGuess.select();
         }
 
+        // Check the user's guess
         function checkGuess()
         {
-            // get user guess
+            // Get user guess
             var userGuess = parseInt(document.guessForm.userGuess.value);
+
 
             if (userGuess === theNumber)
             {
+                // Display winner message personalized with the user's name.
                 message.innerHTML = 'You won ' + name + '!';
                 message.style.visibility = 'visible';
 
+                // Disable the guess button.
+                guessButton.disabled = true;
+                guessButton.style.backgroundColor = '#86e87d';
+                guessButton.style.cursor = 'auto';
+
+                // Set the first winner image.
                 document.body.style.backgroundImage = "url('winner1.jpg')";
-                rotate = setInterval(rotateWinnerImage, 1000);
+
+                // Rotate through the winner images.
+                rotate = setInterval(rotateWinnerImage, winnerImageRotateTime);
             }
             else
             {
@@ -151,8 +207,8 @@
                     // Change the background image, then change it back.
                     document.body.style.backgroundImage = "url('happyFace.jpg')";
                     setTimeout(function() {
-                        document.body.style.backgroundImage = "url('jellybeans.jpg')";
-                    }, 1000);
+                        setDefaultBackgroundImage();
+                    }, wrongImageResetTime);
                 }
                 else
                 {
@@ -163,8 +219,8 @@
                     // Change the background image, then change it back.
                     document.body.style.backgroundImage = "url('sadFace.jpg')";
                     setTimeout(function() {
-                        document.body.style.backgroundImage = "url('jellybeans.jpg')";
-                    }, 1000);
+                        setDefaultBackgroundImage();
+                    }, wrongImageResetTime);
                 }
 
                 // Focus and select the input box.
