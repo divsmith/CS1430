@@ -50,8 +50,6 @@
             font-size: 50px;
             margin-top: 0px;
             margin-bottom: 0px;
-            visibility: hidden;
-
         }
 
         input[type=button] {
@@ -84,7 +82,7 @@
 <body onload="initialize()">
     <div id="game-div">
         <h1 id="heading">Guessing Game</h1>
-        <h3 id="message">placeholder</h3>
+        <h3 id="message">Guess a number between 1 and 99</h3>
         <form name="guessForm" action="javascript:checkGuess()">
             <div id="guess-input">
                 Your guess:&nbsp;<input id="numberInput" type="number" name="userGuess" value="50"
@@ -121,9 +119,8 @@
             guessButton.style.backgroundColor = '#30C022';
             guessButton.style.cursor = 'pointer';
 
-            // Place placeholder text in the message div and make it hidden.
-            message.innerHTML = 'placeholder';
-            message.style.visibility = 'hidden';
+            // Place placeholder text in the message div.
+            message.innerHTML = 'Guess a number between 1 and 99';
 
             // Set the number the user is trying to guess.
             theNumber = Math.floor(Math.random() * 100);
