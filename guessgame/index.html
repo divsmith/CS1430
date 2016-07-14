@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Guessing Game Tutorial</title>
+    <title>Guessing Game</title>
 
     <link href="https://fonts.googleapis.com/css?family=Katibeh" rel="stylesheet">
 
@@ -192,6 +192,9 @@
 
                 // Rotate through the winner images.
                 rotate = setInterval(rotateWinnerImage, winnerImageRotateTime);
+
+                // Focus on the reset button to allow resetting by pressing enter.
+                document.getElementById('resetButton').focus();
             }
             else
             {
