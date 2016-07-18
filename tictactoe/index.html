@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+    <style>
+        @font-face {
+            font-family: 'drawing_guidesregular';
+            src: url('drawing_guides-webfont.woff2') format('woff2'),
+            url('drawing_guides-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'chalkfont';
+            src: url('chalkfont-webfont.woff2') format('woff2'),
+            url('chalkfont-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #heading {
+            font-size: 120px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        body {
+            background-image: url('background.jpg');
+            background-size: 100%;
+            font-family: 'drawing_guidesregular';
+            color: white;
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .cell {
+            display: table-cell;
+            border: solid;
+            border-width: thin;
+            padding-left: 5px;
+            padding-right: 5px;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 100px;
+        }
+    </style>
+
+    <script>
+        var currentPlayer = 'X';
+        var xGameTotal = 0;
+        var oGameTotal = 0;
+        var winsArray = [7, 56, 448, 73, 146, 292, 273, 84]; // Wins condition values
+
+        function playerMoved(id, value)
+        {
+            //alert(id + ' ' + value);
+
+            // place a marker
+            changeMarker(id);
+
+            // update player total
+            updatePlayerTotal(value);
+
+            // check for winner
+            checkForWinner(currentPlayer === 'X' ? xGameTotal : oGameTotal);
+
+            // switch players
+            changePlayer();
+        }
+
+        function changeMarker(box)
+        {
+            box.innerHTML = currentPlayer === 'X' ? 'X' : 'O';
+        }
+
+        function changePlayer()
+        {
+            // Swap the current player.
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+
+        function updatePlayerTotal(value)
+        {
+            if (currentPlayer === 'X')
+            {
+                xGameTotal += value;
+            }
+            else
+            {
+                oGameTotal += value;
+            }
+
+            //alert(xGameTotal + ' ' + oGameTotal);
+        }
+
+        function checkForWinner(score)
+        {
+            for (var i = 0; i < winsArray.length; i++)
+            {
+                //compare the wins Array occurrence bitwise to the current score //
+                if ((winsArray[i] & score) === winsArray[i])
+                {
+                    console.log('winner');
+                    return true; //bitwise match - we have a winner!
+                }
+            }
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <p id="heading">Tic Tac Toe</p>
+    <div class="row">
+        <div class="cell" onclick="playerMoved(this, 1)"></div>
+        <div class="cell" onclick="playerMoved(this, 2)"></div>
+        <div class="cell" onclick="playerMoved(this, 4)"></div>
+    </div>
+    <div class="row">
+        <div class="cell" onclick="playerMoved(this, 8)"></div>
+        <div class="cell" onclick="playerMoved(this, 16)"></div>
+        <div class="cell" onclick="playerMoved(this, 32)"></div>
+    </div>
+    <div class="row">
+        <div class="cell" onclick="playerMoved(this, 64)"></div>
+        <div class="cell" onclick="playerMoved(this, 128)"></div>
+        <div class="cell" onclick="playerMoved(this, 256)"></div>
+    </div>
+</body>
+</html>
