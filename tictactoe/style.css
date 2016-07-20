@@ -1,0 +1,140 @@
+@font-face {
+    font-family: 'drawing_guidesregular';
+    src: url('drawing_guides-webfont.woff2') format('woff2'),
+    url('drawing_guides-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'crumble';
+    src: url('dk_crayon_crumble-webfont.woff2') format('woff2'),
+    url('dk_crayon_crumble-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.horizontal {
+    width: 100%;
+}
+
+.vertical {
+    width: 100%;
+}
+
+.top {
+    margin-bottom: 50px;
+}
+
+.bottom {
+    margin-top: 50px;
+    padding-bottom: 125px;
+}
+
+.left {
+    position: relative;
+    right: 15%;
+    top: 50px;
+    transform: rotate(90deg);
+}
+
+.right {
+    position: relative;
+    left: 15%;
+    top: 40px;
+    transform: rotate(90deg);
+}
+
+#heading {
+    font-size: 140px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 560px;
+}
+
+#gamediv {
+    width: 500px;
+    padding-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+#gameboard {
+    position: absolute;
+    bottom: 28px;
+    left: 45px;
+}
+
+#playagain {
+    color: white;
+    border: none;
+    padding: 20px;
+    font-size: 40px;
+    font-family: 'crumble';
+    background: url('box.png');
+    background-size: 150% 150%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+body {
+    background-image: url('background.jpg');
+    background-size: 100%;
+    font-family: 'crumble';
+    color: #F1F2F4;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 130px;
+    width: 130px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 100px;
+}
+
+#gamerow {
+    width: 1000px;
+    margin: auto;
+}
+
+#player1 {
+    float: left;
+    margin-top: 0px;
+    font-size: 50px;
+}
+
+#player2 {
+    float: right;
+    font-size: 50px;
+    text-align: center;
+}
+
+.playerName {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.icon {
+    font-size: 150px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+
+.wins {
+    margin-top: 0px;
+}
