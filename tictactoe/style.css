@@ -118,6 +118,14 @@ body {
     color: #ED8A8A;
 }
 
+#player1Hover {
+    color: #c3d9ee;
+}
+
+#player2Hover {
+    color: #f5bdbd;
+}
+
 #player1 {
     float: left;
     margin-top: 0px;

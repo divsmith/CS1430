@@ -5,6 +5,7 @@ var player1 = {
     name: '',
     symbol: 'X',
     class: 'player1Marker',
+    hoverID: 'player1Hover',
     gameTotal: 0,
     wins: 0
 }
@@ -12,6 +13,7 @@ var player2 = {
     name: '',
     symbol: 'O',
     class: 'player2Marker',
+    hoverID: 'player2Hover',
     gameTotal: 0,
     wins: 0
 };
@@ -75,9 +77,11 @@ function playerMoved(id, value)
             swapPlayerSymbols();
             drawSymbols();
         }
-
-        // switch players
-        changeCurrentPlayer();
+        else
+        {
+            // switch players
+            changeCurrentPlayer();
+        }
     }
 }
 
@@ -102,6 +106,8 @@ function swapPlayerSymbols()
     var tempSymbol = player1.symbol;
     player1.symbol = player2.symbol;
     player2.symbol = tempSymbol;
+
+    currentPlayer = player1.symbol === 'X' ? player1 : player2;
 }
 
 function changeMarker(box)
@@ -109,6 +115,12 @@ function changeMarker(box)
     if (box.innerHTML === '')
     {
         box.innerHTML = currentPlayer.symbol;
+        box.className = box.className + ' ' + currentPlayer.class;
+        return true;
+    }
+    else if (box.id === currentPlayer.hoverID && box.innerHTML === currentPlayer.symbol)
+    {
+        box.id = '';
         box.className = box.className + ' ' + currentPlayer.class;
         return true;
     }
@@ -139,4 +151,22 @@ function checkForWinner(score)
     }
 
     return false;
+}
+
+function mouseOver(box)
+{
+    if (box.innerHTML === '')
+    {
+        box.innerHTML = currentPlayer.symbol;
+        box.id = currentPlayer.hoverID;
+    }
+}
+
+function mouseOff(box)
+{
+    if (box.id === currentPlayer.hoverID)
+    {
+        box.innerHTML = '';
+        box.id = '';
+    }
 }
