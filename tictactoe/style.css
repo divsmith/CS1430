@@ -110,18 +110,24 @@ body {
     margin: auto;
 }
 
+.player1Marker, #player1 {
+    color: #76A9D8;
+}
+
+.player2Marker, #player2 {
+    color: #ED8A8A;
+}
+
 #player1 {
     float: left;
     margin-top: 0px;
     font-size: 50px;
-    color: #76A9D8;
 }
 
 #player2 {
     float: right;
     font-size: 50px;
     text-align: center;
-    color: #ED8A8A;
 }
 
 .playerName {

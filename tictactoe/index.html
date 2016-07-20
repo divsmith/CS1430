@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="style.css">
     <script src="game.js"></script>
 </head>
-<body>
+<body onload="initialize()">
     <p id="heading">Tic Tac Toe</p>
     <div id="gamerow">
         <div id="player1">
-            <p class="playerName" id="player1Name">Player 1</p>
-            <p class="icon">X</p>
+            <p class="playerName" id="player1Name"></p>
+            <p class="icon" id="player1Icon"></p>
             <p class="wins" id="player1Wins">Wins: 0</p>
         </div>
 
         <div id="player2">
-            <p class="playerName" id="player2Name">Player 2</p>
-            <p class="icon">O</p>
+            <p class="playerName" id="player2Name"></p>
+            <p class="icon" id="player2Icon"></p>
             <p class="wins" id="player2Wins">Wins: 0</p>
         </div>
 
