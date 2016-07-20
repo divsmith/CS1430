@@ -21,61 +21,80 @@
             font-style: normal;
         }
 
+        .horizontal {
+            width: 100%;
+        }
+
+        .vertical {
+            width: 100%;
+        }
+
+        .top {
+            margin-bottom: 50px;
+        }
+
+        .bottom {
+            margin-top: 50px;
+            padding-bottom: 125px;
+        }
+
+        .left {
+            position: relative;
+            right: 15%;
+            top: 50px;
+            transform: rotate(90deg);
+        }
+
+        .right {
+            position: relative;
+            left: 15%;
+            top: 40px;
+            transform: rotate(90deg);
+        }
+
         #heading {
             font-size: 140px;
             margin-top: 25px;
             margin-bottom: 25px;
             margin-left: auto;
             margin-right: auto;
-            width: 675px;
+            width: 560px;
         }
 
-        #gameboard {
+        #gamediv {
             width: 500px;
             margin-right: auto;
             margin-left: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #gameboard {
+            position: absolute;
+            bottom: 28px;
+            left: 45px;
         }
 
         body {
             background-image: url('background.jpg');
             background-size: 100%;
             font-family: 'crumble';
-            color: white;
+            color: #F1F2F4;
         }
 
         .row {
             display: table-row;
         }
 
-        .border-left {
-            border-left: solid;
-            border-width: medium;
-        }
-
-        .border-right {
-            border-right: solid;
-            border-width: medium;
-        }
-
-        .border-top {
-            border-top: solid;
-            border-width: medium;
-        }
-
-        .border-bottom {
-            border-bottom: solid;
-            border-width: medium;
-        }
-
         .cell {
             display: table-cell;
             padding-left: 5px;
             padding-right: 5px;
-            height: 120px;
-            width: 120px;
+            height: 130px;
+            width: 130px;
             text-align: center;
             vertical-align: middle;
-            font-size: 80px;
+            font-size: 100px;
         }
     </style>
 
@@ -145,22 +164,30 @@
 </head>
 <body>
     <p id="heading">Tic Tac Toe</p>
-    <div id="gameboard">
-        <div class="row">
-            <div class="cell border-right border-bottom" onclick="playerMoved(this, 1)"></div>
-            <div class="cell border-left border-right border-bottom" onclick="playerMoved(this, 2)"></div>
-            <div class="cell border-left border-bottom" onclick="playerMoved(this, 4)"></div>
-        </div>
-        <div class="row">
-            <div class="cell border-right border-top border-bottom" onclick="playerMoved(this, 8)"></div>
-            <div class="cell border-left border-right border-top border-bottom" onclick="playerMoved(this, 16)"></div>
-            <div class="cell border-left border-top border-bottom" onclick="playerMoved(this, 32)"></div>
-        </div>
-        <div class="row">
-            <div class="cell border-right border-top" onclick="playerMoved(this, 64)"></div>
-            <div class="cell border-left border-right border-top" onclick="playerMoved(this, 128)"></div>
-            <div class="cell border-left border-top" onclick="playerMoved(this, 256)"></div>
+    <div id="gamediv">
+        <img class="vertical left" src="chalk-line.png" alt="chalk line">
+        <img class="vertical right" src="chalk-line.png" alt="chalk line">
+        <img class="horizontal top" src="chalk-line.png" alt="chalk line">
+        <img class="horizontal bottom" src="chalk-line.png" alt="chalk line">
+
+        <div id="gameboard">
+            <div class="row">
+                <div class="cell" onclick="playerMoved(this, 1)"></div>
+                <div class="cell" onclick="playerMoved(this, 2)"></div>
+                <div class="cell" onclick="playerMoved(this, 4)"></div>
+            </div>
+            <div class="row">
+                <div class="cell" onclick="playerMoved(this, 8)"></div>
+                <div class="cell" onclick="playerMoved(this, 16)"></div>
+                <div class="cell" onclick="playerMoved(this, 32)"></div>
+            </div>
+            <div class="row">
+                <div class="cell" onclick="playerMoved(this, 64)"></div>
+                <div class="cell" onclick="playerMoved(this, 128)"></div>
+                <div class="cell" onclick="playerMoved(this, 256)"></div>
+            </div>
         </div>
     </div>
+
 </body>
 </html>
