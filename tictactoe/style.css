@@ -52,6 +52,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 560px;
+    color: #A7D5A8;
 }
 
 #gamediv {
@@ -113,12 +114,14 @@ body {
     float: left;
     margin-top: 0px;
     font-size: 50px;
+    color: #76A9D8;
 }
 
 #player2 {
     float: right;
     font-size: 50px;
     text-align: center;
+    color: #ED8A8A;
 }
 
 .playerName {
