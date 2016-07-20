@@ -1,22 +1,18 @@
-var currentPlayerSymbol = 'X';
-var currentPlayerClass = 'player1Marker';
-var xGameTotal = 0;
-var oGameTotal = 0;
 var winsArray = [7, 56, 448, 73, 146, 292, 273, 84]; // Wins condition values
-var player1Name = '';
-var player2Name = '';
-var player1Symbol = 'X';
-var player2Symbol = 'O';
+var totalGameMoves = 0;
+var catWins = 0;
 var player1 = {
     name: '',
     symbol: 'X',
     class: 'player1Marker',
+    gameTotal: 0,
     wins: 0
 }
 var player2 = {
     name: '',
     symbol: 'O',
     class: 'player2Marker',
+    gameTotal: 0,
     wins: 0
 };
 
@@ -54,43 +50,81 @@ function drawScore()
 function playerMoved(id, value)
 {
     // place a marker
-    changeMarker(id);
+    if (changeMarker(id))
+    {
+        // update player total
+        updatePlayerTotal(value);
 
-    // update player total
-    updatePlayerTotal(value);
+        // update total game moves;
+        totalGameMoves++;
 
-    // check for winner
-    checkForWinner(currentPlayerSymbol === 'X' ? xGameTotal : oGameTotal);
+        // check for winner
+        if (checkForWinner(currentPlayer.gameTotal))
+        {
+            currentPlayer.wins++;
+            alert(currentPlayer.name + ' is the winner!');
+            resetBoard();
+            swapPlayerSymbols();
+            drawSymbols();
+        }
+        else if (totalGameMoves >= 9)
+        {
+            catWins++;
+            alert('Cat wins! Total cat wins: ' + catWins);
+            resetBoard();
+            swapPlayerSymbols();
+            drawSymbols();
+        }
 
-    // switch players
-    changePlayer();
+        // switch players
+        changeCurrentPlayer();
+    }
+}
+
+function resetBoard()
+{
+    var cells = document.getElementsByClassName('cell');
+
+    player1.gameTotal = 0;
+    player2.gameTotal = 0;
+
+    for (var i = 0; i < cells.length; i++)
+    {
+        cells[i].innerHTML = '';
+        cells[i].className = 'cell';
+    }
+
+    totalGameMoves = 0;
+}
+
+function swapPlayerSymbols()
+{
+    var tempSymbol = player1.symbol;
+    player1.symbol = player2.symbol;
+    player2.symbol = tempSymbol;
 }
 
 function changeMarker(box)
 {
-    box.innerHTML = currentPlayerSymbol;
-    box.className = box.className + ' ' + currentPlayerClass;
+    if (box.innerHTML === '')
+    {
+        box.innerHTML = currentPlayer.symbol;
+        box.className = box.className + ' ' + currentPlayer.class;
+        return true;
+    }
+
+    return false;
 }
 
-function changePlayer()
+function changeCurrentPlayer()
 {
     // Swap the current player.
-    currentPlayerSymbol = currentPlayerSymbol === 'X' ? 'O' : 'X';
-    currentPlayerClass = currentPlayerClass === 'player1Marker' ? 'player2Marker' : 'player1Marker';
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
 }
 
 function updatePlayerTotal(value)
 {
-    if (currentPlayerSymbol === 'X')
-    {
-        xGameTotal += value;
-    }
-    else
-    {
-        oGameTotal += value;
-    }
-
-    //alert(xGameTotal + ' ' + oGameTotal);
+    currentPlayer.gameTotal += value;
 }
 
 function checkForWinner(score)
@@ -100,7 +134,6 @@ function checkForWinner(score)
         //compare the wins Array occurrence bitwise to the current score //
         if ((winsArray[i] & score) === winsArray[i])
         {
-            console.log('winner');
             return true; //bitwise match - we have a winner!
         }
     }
