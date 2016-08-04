@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Parker Smith</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="simply-me/style.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+<nav class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand navbar-color" href="./index.html">Parker Smith</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./index.html#who" class="navbar-color">WHO</a></li>
+                <li><a href="./index.html#what" class="navbar-color">INTERESTS</a></li>
+                <li><a href="./index.html#skills" class="navbar-color">SKILLS</a></li>
+                <li><a href="./index.html#where" class="navbar-color">CONTACT</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle navbar-color" data-toggle="dropdown" href="#">SCHOOL<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://psslcc.weebly.com">SLCC ePORTFOLIO</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">CS 1430 <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/reflection.html">REFLECTION</a></li>
+                                <li><a href="/map/index.html" tabindex="-1">UTAH MAP</a></li>
+                                <li><a href="/resume/index.html" tabindex="-1" >RESUME</a></li>
+                                <li><a href="/photos" tabindex='-1'>LITTLE BOXES</a></li>
+                                <li><a href="/pizzaplace/index.html" tabindex="-1">OLIO PIZZERIA</a></li>
+                                <li><a href="/guessgame/index.html" tabindex="-1">GUESSING GAME</a></li>
+                                <li><a href="/tictactoe/index.html" tabindex="-1">TIC TAC TOE</a></li>
+                                <li><a href="/simply-me" tabindex="-1">SIMPLY ME</a></li>
+                                <li><a href="/the-band/index.html" tabindex="-1">THE BAND</a></li>
+                                <li><a href="/the-company/index.html" tabindex="-1">THE COMPANY</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid bg-1" id="who">
+    <h2 class="margin text-center">CS 1430 Reflection</h2>
+    <div class="row col-md-offset-4 col-md-4">
+        <p class="reflection">
+            Overall this was a pretty fun class. I had been web programming for some time now with PHP, Bootstrap, and Javascript,
+            but this helped me refine my raw HTML and CSS skills. Learning how to make websites from scratch without the help of a
+            framework was admittedly challenging, but it was worth it and rewarding.
+        </p>
+
+        <p class="reflection">
+            I feel much more confident in my ability to take an idea or concept and turn it into a working model in code. I really enjoyed
+            learning and being pushed to improve the design elements. In particular, I learned how to use full background images and how to make text and forms look aesthetically pleasing
+            on top of them.
+        </p>
+
+        <p class="reflection">
+            The confidence and eye for aesthetics and usability I've gained will be of assistance to me as I move forward in the development community and
+             continue with my schooling.
+        </p>
+    </div>
+</div>
+<div class="push"></div>
+
+<footer class="container-fluid bg-4 text-center footer">
+    <p>Copyright Parker Smith 2016</a></p>
+</footer>
+
+<script>
+    $(document).ready(function(){
+        $('.dropdown-submenu a.test').on("click", function(e){
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
+</body>
+</html>
